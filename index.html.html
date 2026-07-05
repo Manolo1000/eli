@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Eli Ayo — Network Security Engineer</title>
+<meta name="description" content="Network security engineer. Firewalls, segmentation, and incident response." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #E8E3D5;
+    --paper-deep: #DFD9C7;
+    --ink: #1A1815;
+    --muted: #6B665C;
+    --rule: #B8AF9A;
+    --accent: #6B1D1D;
+    --accent-soft: rgba(107, 29, 29, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 20% 15%, rgba(0,0,0,0.02) 0%, transparent 40%),
+      radial-gradient(circle at 80% 85%, rgba(0,0,0,0.025) 0%, transparent 45%);
+  }
+
+  .page {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 32px 96px;
+    position: relative;
+  }
+
+  /* ---------- top metadata bar ---------- */
+  .meta-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 72px;
+  }
+
+  .meta-bar .stamp {
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  /* ---------- hero ---------- */
+  .hero { margin-bottom: 88px; }
+
+  .name {
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: clamp(56px, 12vw, 104px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 32px;
+  }
+
+  .name .last { font-style: italic; }
+
+  .lede {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-size: clamp(20px, 3.4vw, 26px);
+    line-height: 1.35;
+    color: var(--ink);
+    max-width: 520px;
+    letter-spacing: -0.005em;
+  }
+
+  /* ---------- section blocks ---------- */
+  .section {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 32px;
+    padding: 32px 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .section:last-of-type { border-bottom: 1px solid var(--rule); }
+
+  .section .label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 4px;
+  }
+
+  .section .body { font-size: 16px; }
+
+  .section .body p + p { margin-top: 12px; }
+
+  /* ---------- current focus block gets emphasis ---------- */
+  .focus .body {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(19px, 2.6vw, 22px);
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .focus .body em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* ---------- skills list ---------- */
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 0;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin-top: 16px;
+  }
+
+  .skills span {
+    padding: 3px 10px 3px 0;
+    position: relative;
+  }
+
+  .skills span:not(:last-child)::after {
+    content: '·';
+    position: absolute;
+    right: 0;
+    color: var(--rule);
+  }
+
+  .role-line {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  .role-line strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* ---------- credentials ---------- */
+  .creds { font-size: 15px; }
+  .creds li {
+    list-style: none;
+    padding: 4px 0;
+    color: var(--ink);
+  }
+  .creds li .school {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    display: block;
+    margin-top: 2px;
+  }
+  .creds li .status {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-left: 8px;
+    padding: 2px 6px;
+    background: var(--accent-soft);
+    border-radius: 2px;
+    vertical-align: 2px;
+  }
+
+  /* ---------- contact ---------- */
+  .contact-list { font-family: 'IBM Plex Mono', monospace; font-size: 14px; }
+  .contact-list li {
+    list-style: none;
+    padding: 6px 0;
+    display: flex;
+    gap: 16px;
+  }
+  .contact-list .key {
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    min-width: 70px;
+  }
+  .contact-list a {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .contact-list a:hover,
+  .contact-list a:focus-visible {
+    color: var(--accent);
+    border-color: var(--accent);
+    outline: none;
+  }
+
+  /* ---------- signature stamp ---------- */
+  .stamp-block {
+    margin-top: 72px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .stamp-block .box {
+    border: 1px solid var(--accent);
+    padding: 8px 14px;
+    transform: rotate(-1.5deg);
+    line-height: 1.3;
+  }
+
+  /* ---------- mobile ---------- */
+  @media (max-width: 640px) {
+    .page { padding: 32px 22px 72px; }
+    .meta-bar { margin-bottom: 48px; font-size: 10px; }
+    .hero { margin-bottom: 64px; }
+    .section {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 28px 0;
+    }
+    .section .label { padding-top: 0; }
+    .stamp-block { justify-content: flex-start; }
+  }
+
+  /* ---------- reduced motion respected implicitly (no motion used) ---------- */
+
+  @media print {
+    body { background: white; }
+    .stamp-block { display: none; }
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+
+    <!-- top metadata bar -->
+    <div class="meta-bar">
+      <span>Profile · 2026</span>
+      <span class="stamp">Marietta, GA</span>
+    </div>
+
+    <!-- hero -->
+    <section class="hero">
+      <h1 class="name">Eli<br /><span class="last">Ayo</span></h1>
+      <p class="lede">
+        Network security engineer working the line between firewall policy and incident response.
+      </p>
+    </section>
+
+    <!-- perspective -->
+    <section class="section focus">
+      <div class="label">Perspective</div>
+      <div class="body">
+        <p>Most security problems aren't purely technical. They're <em>communication problems disguised as technical ones</em>.</p>
+        <p style="margin-top: 18px;">What I find interesting is the moment technology stops being the primary challenge and human behavior takes over &mdash; incident response, negotiation, the messy decisions people make under pressure.</p>
+      </div>
+    </section>
+
+    <!-- current focus -->
+    <section class="section">
+      <div class="label">Currently</div>
+      <div class="body">
+        <p>Going deep on data negotiation and incident response &mdash; reading case histories, studying how negotiators build trust with attackers under active duress.</p>
+      </div>
+    </section>
+
+    <!-- background -->
+    <section class="section">
+      <div class="label">Background</div>
+      <div class="body">
+        <p>Six-plus years in enterprise network and security engineering. Firewall policy at scale, segmentation projects, the unglamorous work of keeping large environments coherent.</p>
+        <div class="skills">
+          <span>Palo Alto NGFW</span>
+          <span>Cisco FMC / CSM</span>
+          <span>AlgoSec</span>
+          <span>Splunk</span>
+          <span>Infoblox DDI</span>
+          <span>Network Segmentation</span>
+        </div>
+        <p class="role-line">Most recently &mdash; <strong>General Motors</strong>, Network Security Engineer</p>
+      </div>
+    </section>
+
+    <!-- credentials -->
+    <section class="section">
+      <div class="label">Credentials</div>
+      <div class="body">
+        <ul class="creds">
+          <li>
+            M.S. Information Technology, Data Analytics
+            <span class="school">Kennesaw State University</span>
+          </li>
+          <li style="margin-top: 12px;">
+            B.S. Biology &amp; Data Science
+            <span class="school">University of Georgia</span>
+          </li>
+          <li style="margin-top: 12px;">
+            ISC2 CISSP <span class="status">Sept. 2026</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- contact -->
+    <section class="section">
+      <div class="label">Reach Out</div>
+      <div class="body">
+        <p style="margin-bottom: 20px;">Open to conversations on network security, incident response, security operations, ransomware - data negotiation, and security career paths.</p>
+        <ul class="contact-list">
+          <li>
+            <span class="key">Email</span>
+            <a href="mailto:ea100.pro@gmail.com">ea100.pro@gmail.com</a>
+          </li>
+          <li>
+            <span class="key">LinkedIn</span>
+            <a href="https://linkedin.com/in/eayo1" target="_blank" rel="noopener">/in/eayo1</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- signature stamp -->
+    <div class="stamp-block">
+      <div class="box">
+        ATL Tech Summit<br />Jul 2026
+      </div>
+    </div>
+
+  </main>
+</body>
+</html>
